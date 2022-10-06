@@ -32,6 +32,7 @@ const signInWithForm = () => {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
+            alert("You have successfully logged in!");
         })
         .catch((error) => {
             const errorCode = error.code;
