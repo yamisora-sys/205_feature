@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {SignIn} from './components/LoginComponents';
-import {Storage} from './components/Storage';
-
+import {ImageStorage} from './components/ImageStorage';
+import {AudioStorage} from './components/AudioStorage';
 
 function App() {
   return (
@@ -9,7 +9,8 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignIn/>}/>
-        <Route path="/storage" element={<Storage/>}/>
+        <Route path="/Image" element={<ImageStorage/>}/>
+        <Route path="/Audio" element={<AudioStorage/>}/>
       </Routes>
       </BrowserRouter>
     </div>

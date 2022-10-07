@@ -10,14 +10,19 @@ const uploadImage = () => {
     uploadBytes(imgRef, file).then(() => {
         alert("Image uploaded successfully");
     });
-    const task = uploadBytes(imgRef, file);
 };
 
-export function Storage(){
+export function ImageStorage(){
     return (
         <div>
-            <input type="file" id="image"/>
-            <button onClick={uploadImage}>Upload</button>
+            <div>
+            <input type="file" id="image" accept='image/*'/>
+            <button onClick={uploadImage}>Upload Image</button>
+        </div>
+        {/* <div>
+            <input type="file" id="audio"/>
+            <button onClick={uploadAudio}>Upload Audio</button>
+        </div> */}
         </div>
     )
 };
