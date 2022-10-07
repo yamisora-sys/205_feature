@@ -3,6 +3,7 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } f
 
 firebase.initializeApp({
     apiKey: "AIzaSyDr8EbRu7aCCFfmR5qzCaJKM0ujGwE7tpY",
+    storageBucket: 'gs://lamdo11.appspot.com'
 })
 
 const auth = getAuth();
