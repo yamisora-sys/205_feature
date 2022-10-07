@@ -1,5 +1,7 @@
 import firebase from 'firebase/compat/app';
+import { app } from './Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 firebase.initializeApp({
     apiKey: "AIzaSyDr8EbRu7aCCFfmR5qzCaJKM0ujGwE7tpY",
