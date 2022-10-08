@@ -30,10 +30,7 @@ export function Nav() {
               </a>
             </li>
             <li className="nav-item dropdown">
-              <button
-                class="btn dropdown-toggle"
-                onClick={handleDropdown}
-              >
+              <button class="btn dropdown-toggle" onClick={handleDropdown}>
                 Test
               </button>
               <div className="dropdown-menu">
@@ -55,6 +52,11 @@ export function Nav() {
               </div>
             </li>
           </ul>
+          <div className="nav-item">
+            <a className="nav-link" href="/Home">
+              Logout
+            </a>
+          </div>
         </div>
       </div>
     </nav>
