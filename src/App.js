@@ -6,8 +6,10 @@ import { AudioStorage } from './components/AudioStorage'
 import { Message } from './components/Message'
 import { UpdateProfile } from './components/LoginComponents/UpdateProfile'
 import { TestLayout } from './components/TestLayout'
-import { Grammar, Vocabulary, Reading } from './components/Test'
+import { Vocabulary } from './components/Vocabulary'
+import { Grammar } from './components/Grammar'
 import { Listening } from './components/Listening'
+import { Reading } from './components/Reading'
 
 function App() {
     return (
@@ -18,14 +20,14 @@ function App() {
                     <Route path="/image" element={<ImageStorage />} />
                     <Route path="/audio" element={<AudioStorage />} />
                     <Route path="/message" element={<Message />} />
-                    <Route path="/Home" element={<TestLayout />} />
+                    <Route path="/home" element={<TestLayout />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/updateprofile" element={<UpdateProfile />} />
-                    <Route path="/Test/*" element={<TestLayout />} />
-                    <Route path="/Test/Grammar" element={<Grammar />} />
-                    <Route path="/Test/Vocabulary" element={<Vocabulary />} />
-                    <Route path="/Test/Reading" element={<Reading />} />
-                    <Route path="/Test/Listening" element={<Listening />} />
+                    <Route path="/test/*" element={<TestLayout />} />
+                    <Route path="/test/grammar" element={<Grammar />} />
+                    <Route path="/test/vocabulary" element={<Vocabulary />} />
+                    <Route path="/test/reading" element={<Reading />} />
+                    <Route path="/test/listening" element={<Listening />} />
                 </Routes>
             </BrowserRouter>
         </div>

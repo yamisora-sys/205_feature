@@ -23,12 +23,12 @@ const grammars = [
     },
 ]
 
-export function Reading() {
+export function Grammar() {
     return (
         <>
             <TestLayout />
             <div className="mx-auto mt-4 wrap w-75">
-                <h1 className="text-center title">Đọc hiểu</h1>
+                <h1 className="text-center title">Ngữ pháp</h1>
                 {grammars.map((grammar, i) => {
                     return (
                         <div key={i}>
@@ -36,8 +36,14 @@ export function Reading() {
                             {grammar.answerOptions.map((answer, index) => {
                                 return (
                                     <div key={index}>
-                                        <input key={index} type="radio" name="answer" value={answer} id={answer} />
-                                        <label htmlFor={answer}>{answer}</label>
+                                        <input
+                                            key={index}
+                                            type="radio"
+                                            name="answer"
+                                            value={answer}
+                                            id={answer + index}
+                                        />
+                                        <label htmlFor={answer + index}>{answer}</label>
                                         <br />
                                     </div>
                                 )

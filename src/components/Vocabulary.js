@@ -23,12 +23,12 @@ const grammars = [
     },
 ]
 
-export function Reading() {
+export function Vocabulary() {
     return (
         <>
             <TestLayout />
             <div className="mx-auto mt-4 wrap w-75">
-                <h1 className="text-center title">Đọc hiểu</h1>
+                <h1 className="text-center title">Từ vựng</h1>
                 {grammars.map((grammar, i) => {
                     return (
                         <div key={i}>
