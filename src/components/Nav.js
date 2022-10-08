@@ -1,15 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export function Nav() {
   const [isHidden, setIsHidden] = useState(true)
   const handleDropdown = () => {
-    const subMenu = document.querySelector('.sub-menu')
+    const subMenu = document.querySelector('.dropdown-menu')
     if (isHidden) {
-      subMenu.removeAttribute('hidden')
+      subMenu.style.display = 'block'
       setIsHidden(false)
     } else {
-      subMenu.hidden = true
+      subMenu.style.display = 'none'
       setIsHidden(true)
     }
   }
@@ -30,10 +30,13 @@ export function Nav() {
               </a>
             </li>
             <li className="nav-item dropdown">
-              <button className="btn dropdown-toggle" onClick={handleDropdown}>
+              <button
+                class="btn dropdown-toggle"
+                onClick={handleDropdown}
+              >
                 Test
               </button>
-              <div className="sub-menu" hidden>
+              <div className="dropdown-menu">
                 <a className="dropdown-item" href="/Home">
                   N5
                 </a>
@@ -57,5 +60,3 @@ export function Nav() {
     </nav>
   )
 }
-
-
