@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     flex: 1 1 1500px;
     overflow: auto;
+    margin: 20px 20px 20px 20px;
 }
 
 .item {
@@ -20,4 +21,15 @@
     font-weight: bold;
     margin: 10px 10px 10px 10px;
     border-radius: 10px;
+}
+
+.button {
+    background-color: rgb(232, 200, 73);
+    border-radius: 10px;
+}
+
+.avt-box {
+    width: 10%;
+    height: 70px;
+    margin-left: 30px;
 }

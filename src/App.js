@@ -43,7 +43,7 @@ export default function App() {
         <Route path="/audio" element={<AudioStorage/>}/>
         <Route path="/message" element={<Message/>}/>
         <Route path="/Home" element={<Nav/>}/>
-        <Route path="homepage" element={<HomeScreen/>}/>
+        <Route path="/homepage" element={<HomeScreen/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/signout" element={<SignOut/>}/>
         <Route path="/updateprofile" element={<UpdateProfile/>}/>

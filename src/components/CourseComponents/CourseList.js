@@ -4,6 +4,7 @@ import "../../css/List.css"
 import { useEffect, useState } from "react";
 import { getFirestore, collection, addDoc, doc, setDoc, query, where, onSnapshot, getDocs} from "firebase/firestore";
 import { async } from '@firebase/util';
+import { joinCourse } from './JoinCourse';
 
 const getlistCourse = async () => {
     try {
@@ -18,8 +19,6 @@ const getlistCourse = async () => {
         console.log(error);
     }
 };
-
-
 
 export function ListCourse(){
     const [courseLists, setCourseLists] = useState('');
@@ -46,7 +45,7 @@ export function ListCourse(){
                             <div className="Teacher">
                                 <p>Teacher: {doc.TeacherName}</p>
                             </div>
-                            <button>Subcribe</button>
+                            <button type="button" className="button" >Subcribe</button>
                         </div>
                     ))
                 }
