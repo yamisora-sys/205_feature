@@ -3,11 +3,6 @@ import { app, auth } from './Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// firebase.initializeApp({
-//     apiKey: "AIzaSyDr8EbRu7aCCFfmR5qzCaJKM0ujGwE7tpY",
-//     storageBucket: 'gs://lamdo11.appspot.com'
-// })
-
 const signUpWithForm = () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
