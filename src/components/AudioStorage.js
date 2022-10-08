@@ -2,7 +2,6 @@ import { app, db, IMAGES } from './Firebase';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { getFirestore, collection, addDoc, doc, setDoc, query, where, onSnapshot } from "firebase/firestore";
-import { withSwal } from 'react-sweetalert2';
 
 const storage = getStorage(app);
 var acceptFile = ['mp4','mp3','acc','m4a']

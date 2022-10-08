@@ -4,40 +4,39 @@ import { useEffect, useState } from "react";
 import { getFirestore, collection, addDoc, doc, setDoc, query, where, onSnapshot } from "firebase/firestore";
 
 const storage = getStorage(app);
+var acceptFile = ['mp4','mov']
+const docRef = doc(db, 'audio', new Date().getTime().toString());
 
-var acceptFile = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff', 'psd', 'raw', 'heif', 'indd', 'svg', 'ai', 'eps', 'pdf', 'heic'];
-
-const docRef = doc(db, 'images', new Date().getTime().toString());
-
-const uploadImage = () => {
+const uploadVideo = () => {
     const fileName = new Date().getTime().toString();
-    const imgRef = ref(storage, `images/${fileName}`);
-    const file = document.getElementById('image').files[0];
+    const videoRef = ref(storage, `video/${fileName}`);
+    const file = document.getElementById('video').files[0];
     const fileExtension = file.name.split('.').pop();
+
     if (acceptFile.includes(fileExtension)) {
-        uploadBytes(imgRef, file).then(() => {
+        uploadBytes(videoRef, file).then(() => {
+            alert("Video uploaded successfully");
             const data = {
                 name: file.name,
-                url: `images/${fileName}`
+                url: `video/${fileName}`
             }
             setDoc(docRef, data).then(() => {
-                alert("Image uploaded successfully");
+                alert("Video uploaded successfully");
             }).catch((error) => {
                 console.log(error);
             });
         });
     } else {
-        alert("Please upload a valid image file");
+        alert("Please upload a valid video file");
     }
 };
 
-
-export function ImageStorage(){
+export function VideoStorage(){
     return (
         <div>
         <div>
-            <input type="file" id="image" accept='image/*'/>
-            <button onClick={uploadImage}>Upload Image</button>
+            <input type="file" id="video" accept='video/*'/>
+            <button onClick={uploadVideo}>Upload Video</button>
         </div>
         </div>
     )
