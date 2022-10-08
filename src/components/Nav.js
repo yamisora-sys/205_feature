@@ -19,34 +19,34 @@ export function Nav() {
       <div className="container-fluid">
         <div className="collapse navbar-collapse">
           <ul className="mb-2 navbar-nav me-auto mb-lg-0">
-            <li className="nav-item">
+            <li key='1' className="nav-item">
               <a className="nav-link active" aria-current="page" href="/Home">
                 Home
               </a>
             </li>
-            <li className="nav-item">
+            <li key='2' className="nav-item">
               <a className="nav-link" href="/Home">
                 Courses
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <button class="btn dropdown-toggle" onClick={handleDropdown}>
+            <li key='3' className="nav-item dropdown">
+              <button className="btn dropdown-toggle" onClick={handleDropdown}>
                 Test
               </button>
               <div className="dropdown-menu">
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N5
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N4
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N3
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N2
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N1
                 </a>
               </div>
