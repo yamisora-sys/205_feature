@@ -8,6 +8,11 @@ import {Message} from './components/Message';
 import { addCourse } from './components/CourseComponents/AddCourse';
 import { UpdateProfile } from './components/LoginComponents/UpdateProfile';
 import {Nav} from './components/Nav';
+import { TestLayout } from './components/TestLayout'
+import { Vocabulary } from './components/Vocabulary'
+import { Grammar } from './components/Grammar'
+import { Listening } from './components/Listening'
+import { Reading } from './components/Reading'
 import {ProtectedRoute} from './components/ProtectedRoute';
 import {app, auth} from './components/Firebase';
 
@@ -29,10 +34,13 @@ function App() {
         <Route path="/signout" element={<SignOut/>}/>
         <Route path="/updateprofile" element={<UpdateProfile/>}/>
         <Route path="/addcourse" element={<addCourse/>}/>
+        <Route path="/test/*" element={<TestLayout />} />
+        <Route path="/test/grammar" element={<Grammar />} />
+        <Route path="/test/vocabulary" element={<Vocabulary />} />
+        <Route path="/test/reading" element={<Reading />} />
+        <Route path="/test/listening" element={<Listening />} />
       </Routes>
       </BrowserRouter>
     </div>
   );
 }
-
-export default App;

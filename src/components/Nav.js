@@ -1,31 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useState, useEffect } from 'react'
-import { auth } from './Firebase'
+import { useState } from 'react'
 
 export function Nav() {
-
-//   const [name, setName] = useState('')
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       const name = await auth.currentUser.displayName  
-
-//     }
-
-//     fetchData()     
-// }, []);
-
-//     const user = auth.currentUser
-//     if (user !== null){
-//         const name = user.displayName
-//         const email = user.email
-//         const photoUrl = user.photoURL
-//         const emailVerified = user.emailVerified
-//         const uid = user.uid
-
-//         setName(name)
-//     }}
-
   const [isHidden, setIsHidden] = useState(true)
   const handleDropdown = () => {
     const subMenu = document.querySelector('.dropdown-menu')
@@ -43,46 +19,41 @@ export function Nav() {
       <div className="container-fluid">
         <div className="collapse navbar-collapse">
           <ul className="mb-2 navbar-nav me-auto mb-lg-0">
-          <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/updateprofile">
-                {/* {name} */}
-              </a>
-            </li>
-            <li className="nav-item">
+            <li key='1' className="nav-item">
               <a className="nav-link active" aria-current="page" href="/Home">
                 Home
               </a>
             </li>
-            <li className="nav-item">
+            <li key='2' className="nav-item">
               <a className="nav-link" href="/Home">
                 Courses
               </a>
             </li>
-            <li className="nav-item dropdown">
+            <li key='3' className="nav-item dropdown">
               <button className="btn dropdown-toggle" onClick={handleDropdown}>
                 Test
               </button>
               <div className="dropdown-menu">
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N5
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N4
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N3
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N2
                 </a>
-                <a className="dropdown-item" href="/Home">
+                <a className="dropdown-item" href="/Test">
                   N1
                 </a>
               </div>
             </li>
           </ul>
           <div className="nav-item">
-            <a className="nav-link" href="/signout">
+            <a className="nav-link" href="/Home">
               Logout
             </a>
           </div>
