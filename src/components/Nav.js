@@ -1,7 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from 'react'
+import {app, auth} from '../components/Firebase';
 
 export function Nav() {
+
   const [isHidden, setIsHidden] = useState(true)
   const handleDropdown = () => {
     const subMenu = document.querySelector('.dropdown-menu')
@@ -15,7 +17,7 @@ export function Nav() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg bg-info ">
       <div className="container-fluid">
         <div className="collapse navbar-collapse">
           <ul className="mb-2 navbar-nav me-auto mb-lg-0">
