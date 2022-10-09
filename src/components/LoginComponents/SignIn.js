@@ -1,5 +1,4 @@
-import firebase from 'firebase/compat/app';
-import { app, auth } from './Firebase';
+import { app, auth } from '../Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,6 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const signInWithForm = () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
@@ -65,6 +65,9 @@ export function SignIn(){
                         <input type="password" id="password" className="form-control"></input>
                     </div>
                     <button type="button" className="btn btn-primary" onClick={signInWithForm}>Log In</button>
+                    <a href="/signup">
+                        <button type="button" className="btn btn-primary">Sign Up</button>
+                    </a>
                 </div>
             </form>
         </div>
