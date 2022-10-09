@@ -9,7 +9,7 @@ const getAllLesson = async () =>{
         const querySnapshot = await getDocs(q);
         let data = []
         querySnapshot.forEach((doc) => {
-            temp = doc.data()
+            let temp = doc.data()
             temp.id = doc.id
             data.push(temp)
         })
@@ -19,8 +19,8 @@ const getAllLesson = async () =>{
     }
 }
 
-export function ListLesson{
-    const ListLesson [listlesson, setLesson] = useState('');
+export function ListLesson(){
+    const [listlesson, setLesson] = useState('');
     useEffect(() => {
         async function fetchData() {
             const lesson=await getAllLesson();
