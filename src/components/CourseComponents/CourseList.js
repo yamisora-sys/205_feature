@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getFirestore, collection, addDoc, doc, setDoc, query, where, onSnapshot, getDocs} from "firebase/firestore";
 import { async } from '@firebase/util';
 import { onAuthStateChanged } from 'firebase/auth';
-
+import { Link } from 'react-router-dom';
 const docRef = doc(db, 'userCourse', new Date().getTime().toString());
 
 const getlistCourse = async () => {
@@ -25,7 +25,6 @@ const getlistCourse = async () => {
 export function ListCourse(){
     const [courseLists, setCourseLists] = useState('');
     const [studentName, setStudentName] = useState(null);
-
     function joinCourse(name){
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -72,6 +71,7 @@ export function ListCourse(){
                                 <p>Teacher: {doc.TeacherName}</p>
                             </div>
                             <button type="button" className="button" onClick={() => joinCourse(doc.CourseName)}>Subcribe</button>
+                            <button type="button" className="button"><Link to={`/listlesson/${doc.CourseName}`} >View</Link></button>
                         </div>
                     ))
                 }

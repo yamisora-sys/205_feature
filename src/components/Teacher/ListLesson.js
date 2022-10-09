@@ -1,11 +1,11 @@
 import {db} from '../Firebase';
 import {getFirestore, collection, getDocs, query, where, onSnapshot, doc, setDoc} from 'firebase/firestore';
 import {useEffect, useState, Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-const getAllLesson = async () =>{
+const getAllLesson = async (courseName) =>{
     try{
-        const q = query(collection(db, "lesson"));
+        const q = query(collection(db, "lesson"), where('courseName', '==', courseName));
         const querySnapshot = await getDocs(q);
         let data = []
         querySnapshot.forEach((doc) => {
@@ -21,9 +21,10 @@ const getAllLesson = async () =>{
 
 export function ListLesson(){
     const [listlesson, setLesson] = useState('');
+    const courseName = useParams().courseName;
     useEffect(() => {
         async function fetchData() {
-            const lesson=await getAllLesson();
+            const lesson=await getAllLesson(courseName);
             setLesson(lesson)
         } fetchData()
     }, []);

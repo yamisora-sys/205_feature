@@ -56,6 +56,7 @@ export default function App() {
         <Route path="/test/listening" element={<Listening />} />
         <Route path="/addcourse" element={<AddCourse/>}/>
         <Route path="/listcourse" element={<ListCourse/>}/>
+        <Route path="/listlesson/:courseName" element={<ListLesson/>}/>
         <Route path="/listlesson" element={<ListLesson/>}/>
         <Route path="/usercourse" element={<UserCourse/>}/>
       </Routes>
