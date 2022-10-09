@@ -10,6 +10,7 @@ import { async } from '@firebase/util';
 export function UserCourse(){
     const [userCourse, setUserCourse] = useState('');
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -25,32 +26,33 @@ export function UserCourse(){
     const getUserCourse = async () => {
         try {
             const q = query(collection(db, "userCourse"), where("studentName", "==", user));
-            const querySnapshot = await getDocs(q);
+            const querySnapshot = await getDocs(q)
             let data = []
             querySnapshot.forEach((doc) => {
                 data.push(doc.data())
             })
-            return data
+
+            setUserCourse(data)
+            setIsLoading(false)
         } catch (error) {
             console.log(error);
         }
     };
 
-    useEffect(() => {
-        async function fetchData() {
-            const course=await getUserCourse();
-            setUserCourse(course)
-        }
-        fetchData()     
-    }, []);
+    useEffect(() => {   
+        getUserCourse()
+    }, [userCourse]);
+    console.log('us',isLoading)
     
     return (
         <div>
             <div class="list">
-                {userCourse && userCourse.map((doc) => 
+
+                {!isLoading && userCourse && userCourse.map((doc) => 
                      (
                         <div className="item">
                             <div className="title"><h1>{doc.CourseName}</h1></div>
+                            <button type="button" className="button">Get In</button>
                         </div>
                     ))
                 }
