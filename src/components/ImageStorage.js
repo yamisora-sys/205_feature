@@ -60,8 +60,6 @@ const getlistImages = async () => {
 };
 
 
-
-
 export function ImageStorage(){
     const [imageLists, setImageLists] = useState('');
 
