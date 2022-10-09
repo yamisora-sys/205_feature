@@ -9,6 +9,14 @@ const storage = getStorage(app);
 var acceptFile = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff', 'psd', 'raw', 'heif', 'indd', 'svg', 'ai', 'eps', 'pdf', 'heic'];
 
 const docRef = doc(db, 'images', new Date().getTime().toString());
+const getImage = () => {
+    const q = query(collection(db, "images"), where("name", "==", "Picture1.png"));
+    onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(doc.id, " => ", doc.data());
+        });
+    });
+}
 
 const uploadImage = () => {
     const fileName = new Date().getTime().toString();
@@ -32,23 +40,24 @@ const uploadImage = () => {
     } else {
         alert("Please upload a valid image file");
     }
+    getImage();
 };
 
 const getlistImages = async () => {
     try {
         const q = query(collection(db, "images"));
-        const querySnapshot = await getDocs(q);
-        let data = []
-        querySnapshot.forEach((doc) => {
-            data.push(doc.data())
+    const querySnapshot = await getDocs(q);
+    let data = []
+    querySnapshot.forEach((doc) => {
+        data.push(doc.data())
         })
+
         return data
+    
     } catch (error) {
         console.log(error);
     }
 };
-
-
 
 export function ImageStorage(){
     const [imageLists, setImageLists] = useState('');
@@ -61,7 +70,6 @@ export function ImageStorage(){
             setImageLists(images)
             console.log(imageLists)
         }
-
         fetchData()     
     }, []);
     
