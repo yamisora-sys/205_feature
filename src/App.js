@@ -8,6 +8,7 @@ import {Message} from './components/Message';
 import { AddCourse } from './components/CourseComponents/AddCourse';
 import { ListCourse } from './components/CourseComponents/CourseList';
 import { UpdateProfile } from './components/LoginComponents/UpdateProfile';
+import { UserCourse } from "./components/CourseComponents/UserCourse";
 import {Nav} from './components/Nav';
 import { TestLayout } from './components/TestLayout'
 import { Vocabulary } from './components/Vocabulary'
@@ -22,23 +23,24 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { ListLesson } from './components/Teacher/ListLesson';
 export default function App() {
 
-  const currentUser = async () => {
-    const user = await onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        console.log(uid);
-      } else {
-        console.log("User is not signed in");
-      }
-    });
-  }
+  const [user, setUser] = useState(null);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const Name = user.displayName;
+      console.log(Name);
+      setUser(Name);
+    } else {
+      console.log("User is signed out");
+    }
+  });
 
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignIn/>}/>
-        <Route element={<ProtectedRoute user={null} />}></Route>
+        <Route element={<ProtectedRoute user={user} />}></Route>
         <Route path="/image" element={<ImageStorage/>}/>
         <Route path="/audio" element={<AudioStorage/>}/>
         <Route path="/message" element={<Message/>}/>
@@ -55,6 +57,7 @@ export default function App() {
         <Route path="/addcourse" element={<AddCourse/>}/>
         <Route path="/listcourse" element={<ListCourse/>}/>
         <Route path="/listlesson" element={<ListLesson/>}/>
+        <Route path="/usercourse" element={<UserCourse/>}/>
       </Routes>
       </BrowserRouter>
     </div>
