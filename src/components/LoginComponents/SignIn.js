@@ -1,6 +1,11 @@
-import { app, auth } from '../Firebase';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { app, auth } from '../Firebase'
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
+import { HomeScreen } from '../../HomeComponents/HomeScreen'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState, useEffect, useNavigate } from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
+import { render } from '@testing-library/react'
+import { async } from '@firebase/util'
 
 // const signUpWithForm = () => {
 //     const email = document.getElementById('email').value;
@@ -17,20 +22,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //         );
 // }
 
-const signInWithForm = () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
+const signInWithForm = (setAuthenticated) => {
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
-            alert("You have successfully logged in!");
+            const user = userCredential.user
+            console.log(user)
+            console.log('You have successfully logged in!')
+            setAuthenticated(true)
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-        });
+            const errorCode = error.code
+            const errorMessage = error.message
+        })
 }
 
 /*firebase.auth().onAuthStateChanged((user) => {
@@ -50,7 +56,17 @@ const signInWithForm = () => {
     }
 });*/
 
-export function SignIn(){
+export function SignIn() {
+    const [authenticated, setAuthenticated] = useState(
+        localStorage.getItem(localStorage.getItem('authenticated') || false)
+    )
+
+    const handleSubmit = () => {
+        signInWithForm(setAuthenticated)
+    }
+
+    // localStorage.clear()
+
     return (
         <div>
             <form>
@@ -64,13 +80,17 @@ export function SignIn(){
                         <label className="form-label">Password</label>
                         <input type="password" id="password" className="form-control"></input>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={signInWithForm}>Log In</button>
+                    <button type="button" className="btn btn-primary" onClick={handleSubmit}>
+                        Log In
+                    </button>
                     <a href="/signup">
-                        <button type="button" className="btn btn-primary">Sign Up</button>
+                        <button type="button" className="btn btn-primary">
+                            Sign Up
+                        </button>
                     </a>
                 </div>
+                {authenticated && <Navigate to="/homepage" />}
             </form>
         </div>
     )
 }
-
