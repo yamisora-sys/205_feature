@@ -20,7 +20,7 @@ import {ProtectedRoute} from './components/ProtectedRoute';
 import {app, auth} from './components/Firebase';
 import {useState, useEffect} from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-
+import { ListLesson } from './components/Teacher/ListLesson';
 export default function App() {
 
   const [user, setUser] = useState(null);
@@ -56,6 +56,7 @@ export default function App() {
         <Route path="/test/listening" element={<Listening />} />
         <Route path="/addcourse" element={<AddCourse/>}/>
         <Route path="/listcourse" element={<ListCourse/>}/>
+        <Route path="/listlesson" element={<ListLesson/>}/>
         <Route path="/usercourse" element={<UserCourse/>}/>
       </Routes>
       </BrowserRouter>
