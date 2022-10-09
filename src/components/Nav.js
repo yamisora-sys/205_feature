@@ -45,7 +45,7 @@ export function Nav() {
               </a>
             </li>
             <li key='2' className="nav-item">
-              <a className="nav-link" href="/Home">
+              <a className="nav-link" href="UserCourse/">
                 Courses
               </a>
             </li>
