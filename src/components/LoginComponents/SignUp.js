@@ -11,6 +11,7 @@ const signUpWithForm = () => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
+            alert("You have successfully signed up!");
         }
         )
         .catch((error) => {
@@ -41,7 +42,7 @@ export function SignUp(){
     return (
         <div>
             <form>
-                <h2>Login</h2>
+                <h2>Sign Up</h2>
                 <div className="">
                     <div className="mb-3">
                         <label className="form-label">Display Name</label>

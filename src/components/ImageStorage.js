@@ -37,14 +37,12 @@ const uploadImage = () => {
 const getlistImages = async () => {
     try {
         const q = query(collection(db, "images"));
-    const querySnapshot = await getDocs(q);
-    let data = []
-    querySnapshot.forEach((doc) => {
-        data.push(doc.data())
+        const querySnapshot = await getDocs(q);
+        let data = []
+        querySnapshot.forEach((doc) => {
+            data.push(doc.data())
         })
-
         return data
-    
     } catch (error) {
         console.log(error);
     }

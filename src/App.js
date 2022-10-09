@@ -5,7 +5,8 @@ import { SignOut } from './components/LoginComponents/SignOut';
 import {ImageStorage} from './components/ImageStorage';
 import {AudioStorage} from './components/AudioStorage';
 import {Message} from './components/Message';
-import { addCourse } from './components/CourseComponents/AddCourse';
+import { AddCourse } from './components/CourseComponents/AddCourse';
+import { ListCourse } from './components/CourseComponents/CourseList';
 import { UpdateProfile } from './components/LoginComponents/UpdateProfile';
 import {Nav} from './components/Nav';
 import { TestLayout } from './components/TestLayout'
@@ -13,32 +14,46 @@ import { Vocabulary } from './components/Vocabulary'
 import { Grammar } from './components/Grammar'
 import { Listening } from './components/Listening'
 import { Reading } from './components/Reading'
+import { HomeScreen } from './HomeComponents/HomeScreen';
 import {ProtectedRoute} from './components/ProtectedRoute';
 import {app, auth} from './components/Firebase';
+import {useState, useEffect} from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 
-function App() {
+export default function App() {
 
-  const userId = auth.currentUser?.uid;
+  const currentUser = async () => {
+    const user = await onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        console.log(uid);
+      } else {
+        console.log("User is not signed in");
+      }
+    });
+  }
 
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignIn/>}/>
-        <Route element={<ProtectedRoute user={userId} />}></Route>
+        <Route element={<ProtectedRoute user={null} />}></Route>
         <Route path="/image" element={<ImageStorage/>}/>
         <Route path="/audio" element={<AudioStorage/>}/>
         <Route path="/message" element={<Message/>}/>
         <Route path="/Home" element={<Nav/>}/>
+        <Route path="/homepage" element={<HomeScreen/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/signout" element={<SignOut/>}/>
         <Route path="/updateprofile" element={<UpdateProfile/>}/>
-        <Route path="/addcourse" element={<addCourse/>}/>
         <Route path="/test/*" element={<TestLayout />} />
         <Route path="/test/grammar" element={<Grammar />} />
         <Route path="/test/vocabulary" element={<Vocabulary />} />
         <Route path="/test/reading" element={<Reading />} />
         <Route path="/test/listening" element={<Listening />} />
+        <Route path="/addcourse" element={<AddCourse/>}/>
+        <Route path="/listcourse" element={<ListCourse/>}/>
       </Routes>
       </BrowserRouter>
     </div>
