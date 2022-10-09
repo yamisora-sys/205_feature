@@ -33,10 +33,10 @@ export function Vocabulary() {
                     return (
                         <div key={i}>
                             <h2>{grammar.question}</h2>
-                            {grammar.answerOptions.map((answer, index) => {
+                            {grammar.answerOptions.map((answer, index, arr) => {
                                 return (
                                     <div key={index}>
-                                        <input key={index} type="radio" name="answer" value={answer} id={answer} />
+                                        <input key={index} type="radio" name={arr[0]} id={answer} value={answer} />
                                         <label htmlFor={answer}>{answer}</label>
                                         <br />
                                     </div>

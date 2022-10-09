@@ -15,11 +15,11 @@ import { Vocabulary } from './components/Vocabulary'
 import { Grammar } from './components/Grammar'
 import { Listening } from './components/Listening'
 import { Reading } from './components/Reading'
-import { HomeScreen } from './HomeComponents/HomeScreen';
-import {ProtectedRoute} from './components/ProtectedRoute';
-import {app, auth} from './components/Firebase';
-import {useState, useEffect} from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
+import { HomeScreen } from './HomeComponents/HomeScreen'
+import { ProtectedRoute } from './components/ProtectedRoute'
+import { app, auth } from './components/Firebase'
+import { useState, useEffect } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
 import { ListLesson } from './components/Teacher/ListLesson';
 export default function App() {
 
@@ -37,7 +37,6 @@ export default function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignIn/>}/>
         <Route element={<ProtectedRoute user={user} />}></Route>
@@ -60,7 +59,6 @@ export default function App() {
         <Route path="/listlesson" element={<ListLesson/>}/>
         <Route path="/usercourse" element={<UserCourse/>}/>
       </Routes>
-      </BrowserRouter>
     </div>
   );
 }
